@@ -1,0 +1,21 @@
+{
+  "name": "flight-tracker",
+  "version": "1.0.0",
+  "description": "Blloc Application, a simple flight tracker",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server index.js"
+  },
+  "author": "Jonathan Salazar",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "node-sass": "^4.13.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.11.5"
+  }
+}
