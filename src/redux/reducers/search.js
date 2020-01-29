@@ -1,7 +1,7 @@
 import { SET_SEARCH_TEXT, SEARCH_FLIGHT } from "../actionTypes";
 
 const initialState = {
-  searchText: "",
+  searchText: "hola",
   flightInformation: {}
 };
 

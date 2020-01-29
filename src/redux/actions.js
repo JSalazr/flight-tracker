@@ -1,4 +1,4 @@
-import { SET_SEARCH_TEXT, SEARCH_FLIGHT } from "../actionTypes";
+import { SET_SEARCH_TEXT, SEARCH_FLIGHT } from "./actionTypes";
 
 export const setSearchText = searchText => ({
   type: SET_SEARCH_TEXT,

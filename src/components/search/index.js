@@ -1,18 +1,51 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { searchFlight } from '../../redux/actions';
 
 class SearchForm extends React.Component {
-  render() {
+  constructor(props) {
+    super(props);
+  }
 
+  state = {
+    searchText: this.props.searchText
+  }
+
+  search = () => {
+    this.props.searchFlightDispatcher(this.state.searchText);
+  }
+
+  onChangeFlight = (event) => {
+    this.setState({
+      searchText: event.target.value
+    });
+  }
+
+  render() {
     return (
-      <form>
+      <>
         <label>
           Flight:
-          <input type="text" name="name" />
+          <input onChange={this.onChangeFlight} type="text" name="name" />
         </label>
-        <input type="submit" value="Search" />
-      </form>	
+        <button onClick={this.search}>
+          Search
+        </button>
+      </>
     );
   }
 }
 
-export default SearchForm;
+const mapStateToProps = (state) => {
+  return {
+    searchText: state.search.searchText
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchFlightDispatcher: (searchText) => dispatch(searchFlight(searchText))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
