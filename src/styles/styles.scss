@@ -10,9 +10,22 @@
 
 .center {
   width: 50%;
-  border-radius: 25px;
-  background: #EDCE85;
   padding: 20px;
-  color: #264653;
-  box-shadow: 3px 3px 3px #264653;
+  color: #ffffff;
+
+  .search-label {
+    font-size: 4em;
+    vertical-align: bottom;
+  }
+
+  .search-bar {
+    width: 90%;
+    border-radius: 25px;
+    border-style: none;
+    height: 2em;
+    padding: 5px 5px 5px 15px;
+    color: #264653;
+    background: #ffffff;
+    font-size: 1.25em;
+  }
 }

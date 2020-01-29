@@ -27,8 +27,10 @@ class SearchForm extends React.Component {
     return (
       <>
         <label>
-          Flight:
-          <input onChange={this.onChangeFlight} type="text" name="name" />
+          <div className='search-label'>
+            Flight Tracker
+          </div>
+          <input className='search-bar' onChange={this.onChangeFlight} type="text" name="name" />
         </label>
         <Link to={`/${searchText}`} onClick={this.search}>Search</Link>
       </>
