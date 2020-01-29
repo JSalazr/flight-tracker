@@ -13,8 +13,20 @@ const config = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(css|sass|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ],
+      }
     ],
   },
+  output: {
+    path: __dirname,
+    filename: 'bundle.js'
+},
 };
 
 module.exports = config;
