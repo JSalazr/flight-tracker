@@ -26,7 +26,10 @@ const config = {
   output: {
     path: __dirname,
     filename: 'bundle.js'
-},
+  },
+  devServer: {
+    historyApiFallback: true
+  }
 };
 
 module.exports = config;

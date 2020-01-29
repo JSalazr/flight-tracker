@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { searchFlight } from '../../redux/actions';
+import { Link } from 'react-router-dom';
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -22,15 +23,14 @@ class SearchForm extends React.Component {
   }
 
   render() {
+    const { searchText } = this.state;
     return (
       <>
         <label>
           Flight:
           <input onChange={this.onChangeFlight} type="text" name="name" />
         </label>
-        <button onClick={this.search}>
-          Search
-        </button>
+        <Link to={`/${searchText}`} onClick={this.search}>Search</Link>
       </>
     );
   }
