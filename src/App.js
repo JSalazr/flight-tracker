@@ -1,14 +1,29 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 import LandingPage from './components/landingPage';
+import ResultPage from './components/resultPage';
 import './styles/styles.scss';
 
 class App extends React.Component {
   render() {
 
     return (
-			<div className="container">
-				<LandingPage className="landingPage" />	
-			</div>
+      <Router>
+        <div className="container">
+          <Switch>
+            <Route path='/:flight' children={
+              <ResultPage className="landingPage" />	
+            } />
+            <Route path='/' children={
+              <LandingPage className="landingPage" />	
+            } />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

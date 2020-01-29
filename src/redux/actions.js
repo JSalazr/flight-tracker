@@ -1,4 +1,5 @@
 import { SET_SEARCH_TEXT, SEARCH_FLIGHT } from "./actionTypes";
+import axios from 'axios';
 
 export const setSearchText = searchText => ({
   type: SET_SEARCH_TEXT,
@@ -8,6 +9,11 @@ export const setSearchText = searchText => ({
 });
 
 export const searchFlight = searchText => {
+  // axios.get('https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/FR/147/arr/2020/1/28', {
+  //   value: "FR147"
+  // }).then(response => {
+  //   console.log(response.data);
+  // });
   const flightInformation = {
     flightNumber: searchText,
     location: {
