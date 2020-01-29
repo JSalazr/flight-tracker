@@ -18,14 +18,25 @@
     vertical-align: bottom;
   }
 
-  .search-bar {
-    width: 90%;
+  .search-area {
     border-radius: 25px;
     border-style: none;
     height: 2em;
+    font-size: 1.25em;
+  }
+
+  .search-bar {
+    width: 85%;
     padding: 5px 5px 5px 15px;
     color: #264653;
     background: #ffffff;
-    font-size: 1.25em;
+  }
+
+  .search-button {
+    width: 10%;
+    color: #ffffff;
+    background: #FF00FF;
+    padding: 0.75em;
+    margin-left: 0.25em;
   }
 }

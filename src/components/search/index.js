@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { searchFlight } from '../../redux/actions';
 import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa'
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -30,9 +31,9 @@ class SearchForm extends React.Component {
           <div className='search-label'>
             Flight Tracker
           </div>
-          <input className='search-bar' onChange={this.onChangeFlight} type="text" name="name" />
+          <input className='search-area search-bar' onChange={this.onChangeFlight} type="text" name="name" placeholder="Flight number" />
         </label>
-        <Link to={`/${searchText}`} onClick={this.search}>Search</Link>
+        <Link className='search-area search-button' to={`/${searchText}`} onClick={this.search}><FaSearch /></Link>
       </>
     );
   }
