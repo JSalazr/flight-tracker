@@ -22,7 +22,7 @@ export const searchFlight = searchText => {
     baggage: "13"
   }
   return {
-    type: TOGGLE_TODO,
+    type: SEARCH_FLIGHT,
     payload: { flightInformation }
   };
 } 
