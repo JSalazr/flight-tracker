@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { searchFlight, setSearchText, cleanStore } from '../../redux/actions';
 import { Link, withRouter } from 'react-router-dom';
-import { navigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa'
 
 class SearchForm extends React.Component {
@@ -55,6 +55,13 @@ class SearchForm extends React.Component {
     );
   }
 }
+
+SearchForm.propTypes = {
+  searchText: PropTypes.string,
+  searchFlightDispatcher: PropTypes.func,
+  setSearchTextDispatcher: PropTypes.func,
+  cleanStoreDispatcher: PropTypes.func
+};
 
 const mapStateToProps = (state) => {
   return {

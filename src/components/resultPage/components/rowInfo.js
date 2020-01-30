@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function rowInfo({
+function RowInfo({
   title,
   value
 }) {
@@ -11,4 +12,9 @@ function rowInfo({
       </div>
   );
 }
-export default rowInfo;
+
+RowInfo.propTypes = {
+  title: PropTypes.string,
+  value: PropTypes.any
+};
+export default RowInfo;

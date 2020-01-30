@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { searchFlight } from '../../../redux/actions';
 import TopRow from './topRow';
@@ -53,6 +54,12 @@ class FlightInformation extends React.Component {
     );
   }
 }
+
+FlightInformation.propTypes = {
+  flight: PropTypes.string,
+  flightInformation: PropTypes.object,
+  searchFlightDispatcher: PropTypes.func
+};
 
 const mapStateToProps = (state) => {
   return {

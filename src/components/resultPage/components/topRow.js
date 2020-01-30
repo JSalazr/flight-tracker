@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RowInfo from './rowInfo';
 
 function TopRow({
@@ -17,4 +18,12 @@ function TopRow({
     </div>
   );
 }
+
+TopRow.propTypes = {
+  flightNumber: PropTypes.string,
+  status: PropTypes.string,
+  origin: PropTypes.string,
+  destination: PropTypes.string,
+  duration: PropTypes.string
+};
 export default TopRow;

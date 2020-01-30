@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RowInfo from './rowInfo';
 
 function FooterRow({
@@ -12,4 +13,9 @@ function FooterRow({
     </div>
   );
 }
+
+FooterRow.propTypes = {
+  delay: PropTypes.any,
+  baggage: PropTypes.string
+};
 export default FooterRow;

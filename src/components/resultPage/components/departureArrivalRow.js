@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RowInfo from './rowInfo';
 import { FaPlaneDeparture } from 'react-icons/fa'
 
@@ -28,4 +29,13 @@ function DepartureArrivalRow({
     </div>
   );
 }
+
+DepartureArrivalRow.propTypes = {
+  departureTerminal: PropTypes.string,
+  departureTime: PropTypes.string,
+  departureDate: PropTypes.string,
+  arrivalTerminal: PropTypes.string,
+  arrivalTime: PropTypes.string,
+  arrivalDate: PropTypes.string,
+};
 export default DepartureArrivalRow;
