@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withAlert } from 'react-alert';
+import ClipLoader from "react-spinners/ClipLoader";
 import { searchFlight, searchFlightSuccess, setSearchText, showSpinner } from '../../../redux/actions';
 import TopRow from './topRow';
 import DepartureArrivalRow from './departureArrivalRow';
@@ -37,14 +38,16 @@ class FlightInformation extends React.Component {
       this.setState({
         flightInformation
       });
-      if(showSpinner) searchFlightSuccessDispatcher();
+      if(!showSpinner) searchFlightSuccessDispatcher();
     });
   } 
 
   render() {
     const { flightInformation } = this.state;
+    const { showSpinner } = this.props;
     return (
       <>
+        <ClipLoader loading={showSpinner} />
         {flightInformation.flightNumber && (
           <div className='result-page'>
             <TopRow 
