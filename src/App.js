@@ -8,24 +8,21 @@ import LandingPage from './components/landingPage';
 import ResultPage from './components/resultPage';
 import './styles/styles.scss';
 
-class App extends React.Component {
-  render() {
-
-    return (
-      <Router>
-        <div className="container">
-          <Switch>
-            <Route path='/:flight' children={
-              <ResultPage className="landingPage" />	
-            } />
-            <Route path='/' children={
-              <LandingPage className="landingPage" />	
-            } />
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
+function App() {
+  return (
+    <Router>
+      <div className="container">
+        <Switch>
+          <Route path='/:flight' children={
+            <ResultPage className="landingPage" />	
+          } />
+          <Route path='/' children={
+            <LandingPage className="landingPage" />	
+          } />
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;

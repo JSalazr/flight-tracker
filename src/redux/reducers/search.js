@@ -1,7 +1,7 @@
-import { SET_SEARCH_TEXT, SEARCH_FLIGHT } from "../actionTypes";
+import { SET_SEARCH_TEXT, SEARCH_FLIGHT, CLEAN_STORE } from "../actionTypes";
 
 const initialState = {
-  searchText: "hola",
+  searchText: "",
   flightInformation: {}
 };
 
@@ -19,6 +19,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         flightInformation: { ...flightInformation },
+      };
+    }
+    case CLEAN_STORE: {
+      return {
+        searchText: "",
+        flightInformation: {},
       };
     }
     default:
