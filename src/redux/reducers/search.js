@@ -1,8 +1,8 @@
-import { SET_SEARCH_TEXT, SEARCH_FLIGHT, CLEAN_STORE } from "../actionTypes";
+import { SET_SEARCH_TEXT, CLEAN_STORE, SHOW_SPINNER, SEARCH_FLIGHT_SUCCESS } from "../actionTypes";
 
 const initialState = {
   searchText: "",
-  flightInformation: {}
+  showSpinner: false
 };
 
 export default function(state = initialState, action) {
@@ -14,11 +14,18 @@ export default function(state = initialState, action) {
         searchText: searchText,
       };
     }
-    case SEARCH_FLIGHT: {
-      const { flightInformation } = action.payload;
+    case SEARCH_FLIGHT_SUCCESS: {
+      const { showSpinner } = action.payload;
       return {
         ...state,
-        flightInformation: { ...flightInformation },
+        showSpinner
+      };
+    }
+    case SHOW_SPINNER: {
+      const { showSpinner } = action.payload;
+      return {
+        ...state,
+        showSpinner
       };
     }
     case CLEAN_STORE: {

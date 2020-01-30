@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { searchFlight, setSearchText, cleanStore } from '../../redux/actions';
 import { Link, withRouter } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa'
+import { withAlert } from 'react-alert';
+import { setSearchText, cleanStore, showSpinner } from '../../redux/actions';
+
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -18,9 +20,18 @@ class SearchForm extends React.Component {
     document.addEventListener('keyup', this.handleEnterPress);
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.searchText != this.props.searchText){
+      this.setState({
+        searchText: this.props.searchText
+      });
+    }
+
+  }
+
   search = () => {
-    this.props.searchFlightDispatcher(this.state.searchText);
-    this.props.setSearchTextDispatcher(this.state.searchText);
+    if(this.state.searchText === '') this.props.alert.show('Please insert a flight number')
+    this.props.showSpinnerDispatcher();
   }
 
   goHome = () => {
@@ -36,7 +47,7 @@ class SearchForm extends React.Component {
   handleEnterPress = (e) => {
     if (e.key === 'Enter') {
       this.search();
-      this.props.history.push(`/${this.state.searchText}`)
+      window.location.href = `/${this.state.searchText}`;
     }
   }
 
@@ -48,7 +59,7 @@ class SearchForm extends React.Component {
           <Link className='search-label' to={'/'} onClick={this.goHome}>
             Flight Tracker
           </Link>
-          <input className='search-area search-bar' onChange={this.onChangeFlight} type="text" name="name" placeholder="Flight number" />
+          <input className='search-area search-bar' onChange={this.onChangeFlight} type="text" name="name" placeholder="Flight number" value={searchText} />
         </label>
         <Link className='search-area search-button' to={`/${searchText}`} onClick={this.search}><FaSearch /></Link>
       </>
@@ -58,9 +69,10 @@ class SearchForm extends React.Component {
 
 SearchForm.propTypes = {
   searchText: PropTypes.string,
-  searchFlightDispatcher: PropTypes.func,
   setSearchTextDispatcher: PropTypes.func,
-  cleanStoreDispatcher: PropTypes.func
+  showSpinnerDispatcher: PropTypes.func,
+  cleanStoreDispatcher: PropTypes.func,
+  alert: PropTypes.any
 };
 
 const mapStateToProps = (state) => {
@@ -71,10 +83,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    searchFlightDispatcher: (searchText) => dispatch(searchFlight(searchText)),
     setSearchTextDispatcher: (searchText) => dispatch(setSearchText(searchText)),
+    showSpinnerDispatcher: () => dispatch(showSpinner()),
     cleanStoreDispatcher: () => dispatch(cleanStore())
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withAlert()(SearchForm)));
