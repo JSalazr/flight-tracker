@@ -1,0 +1,138 @@
+.container {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+}
+
+.search-label {
+  font-size: 4em;
+  vertical-align: bottom;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.search-area {
+  border-radius: 25px;
+  border-style: none;
+  height: 2em;
+  font-size: 1.25em;
+}
+
+.search-bar {
+  width: 85%;
+  padding: 5px 5px 5px 15px;
+  color: #264653;
+  background: #ffffff;
+}
+
+.search-button {
+  width: 10%;
+  color: #ffffff;
+  background: #D100D1;
+  padding: 0.75em;
+  margin-left: 0.25em;
+}
+
+.search-button:hover {
+  background: #FF00FF;
+}
+
+.center {
+  width: 50%;
+  padding: 20px;
+  color: #ffffff;  
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #D100D1;
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  color: #ffffff;
+
+  .search-label {
+    font-size: 2em;
+    vertical-align: middle;
+    float: left;
+    margin: 0.85em;
+  }
+
+  .search-area {
+    margin: 1em;
+  }
+
+  .search-bar {
+    width: 75%;
+  }
+}
+
+
+.result-page {
+  width: 50%;
+  border-radius: 25px;
+  background: #ffffff;
+  padding: 20px;
+  color: #264653;
+  box-shadow: 3px 3px 3px #264653;
+
+  .plane-icon {
+    display: inline-block;
+    text-align: right;
+    font-size: 7em;
+    vertical-align: top;
+    margin-top: -0.5em;
+  }
+
+  .row-info {
+    display: inline-block;
+    width: 25%;
+    font-size: 1.25em;
+  }
+
+  .row-info-title {
+    font-size: 0.65em;
+  }
+
+  .top-row {
+    overflow: hidden;
+    vertical-align: top;
+    width: 100%;
+    margin-bottom: 2em; 
+  }
+
+  .departure-arrival-container {
+    .departure-arrival-row {
+      overflow: hidden;
+      vertical-align: top;
+      width: 80%; 
+      margin-bottom: 1em; 
+      display: inline-block;
+      text-align: left;
+  
+      .row-info {
+        margin-right: 0.5em;
+        font-size: 2em;
+      }
+       
+      .row-info-title {
+        font-size: 0.41em;
+      }
+    }
+  }
+  
+  .footer-row {
+    overflow: hidden;
+    vertical-align: top;
+    width: 100%; 
+    margin-bottom: 1em; 
+
+    .row-info {
+      width: 50%;
+    }
+  }
+}
