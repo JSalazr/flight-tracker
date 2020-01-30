@@ -18,7 +18,6 @@ class FlightInformation extends React.Component {
   }
 
   componentDidMount() {
-    console.log('here');
     const {showSpinnerDispatcher, setSearchTextDispatcher, flight } = this.props;
     showSpinnerDispatcher();
     setSearchTextDispatcher(flight);
