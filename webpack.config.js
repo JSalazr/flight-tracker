@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 const config = {
   entry: [
@@ -33,7 +34,10 @@ const config = {
   },
   node: {
     fs: "empty"
- }
+ },
+ plugins: [
+  new Dotenv()
+]
 };
 
 module.exports = config;
