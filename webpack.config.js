@@ -2,7 +2,8 @@ const path = require('path');
 
 const config = {
   entry: [
-    './index.js',
+    '@babel/polyfill',
+    './index.js'
   ],
   module: {
     rules: [
@@ -29,7 +30,10 @@ const config = {
   },
   devServer: {
     historyApiFallback: true
-  }
+  },
+  node: {
+    fs: "empty"
+ }
 };
 
 module.exports = config;

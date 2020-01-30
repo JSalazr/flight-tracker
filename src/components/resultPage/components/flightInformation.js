@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { searchFlight } from '../../../redux/actions';
+import { withAlert } from 'react-alert';
+import { searchFlight, searchFlightSuccess, setSearchText, showSpinner } from '../../../redux/actions';
 import TopRow from './topRow';
 import DepartureArrivalRow from './departureArrivalRow';
 import FooterRow from './footerRow';
@@ -12,23 +13,41 @@ class FlightInformation extends React.Component {
     super(props);
   }
 
+  state = {
+    flightInformation: {}
+  }
+
   componentDidMount() {
-    const { flight, flightInformation} = this.props;
-    if(flight !== flightInformation.flightNumber){
+    console.log('here');
+    const {showSpinnerDispatcher, setSearchTextDispatcher, flight } = this.props;
+    showSpinnerDispatcher();
+    setSearchTextDispatcher(flight);
+    this.search();
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.flight != this.props.flight){
       this.search();
     }
   }
 
   search = () => {
-    this.props.searchFlightDispatcher(this.props.flight);
-  }
+    const {showSpinner, searchFlightSuccessDispatcher,alert } = this.props;
+    searchFlight(this.props.flight).then(flightInformation => {
+      if(flightInformation.error) alert.show(flightInformation.error);
+      this.setState({
+        flightInformation
+      });
+      if(showSpinner) searchFlightSuccessDispatcher();
+    });
+  } 
 
   render() {
-    const { flightInformation } = this.props;
+    const { flightInformation } = this.state;
     return (
-      <div className='result-page'>
+      <>
         {flightInformation.flightNumber && (
-          <div>
+          <div className='result-page'>
             <TopRow 
               flightNumber={flightInformation.flightNumber}
               status={flightInformation.status}
@@ -38,11 +57,9 @@ class FlightInformation extends React.Component {
             />
             <DepartureArrivalRow 
               departureTerminal={flightInformation.terminal}
-              departureTime={flightInformation.arrivalTime}
-              departureDate={flightInformation.date}
+              departureDate={flightInformation.departureDate}
               arrivalTerminal={flightInformation.terminal}
-              arrivalTime={flightInformation.arrivalTime}
-              arrivalDate={flightInformation.date}
+              arrivalDate={flightInformation.arrivalDate}
             />
             <FooterRow 
               delay={flightInformation.delay}
@@ -50,27 +67,32 @@ class FlightInformation extends React.Component {
             />
           </div>
         )}
-      </div>
+      </>
     );
   }
 }
 
 FlightInformation.propTypes = {
   flight: PropTypes.string,
-  flightInformation: PropTypes.object,
-  searchFlightDispatcher: PropTypes.func
+  showSpinner: PropTypes.bool,
+  searchFlightSuccessDispatcher: PropTypes.func,
+  setSearchTextDispatcher: PropTypes.func,
+  showSpinnerDispatcher: PropTypes.func,
+  alert: PropTypes.any
 };
 
 const mapStateToProps = (state) => {
   return {
-    flightInformation: state.search.flightInformation
+    showSpinner: state.search.showSpinner
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    searchFlightDispatcher: (searchText) => dispatch(searchFlight(searchText))
+    searchFlightSuccessDispatcher: () => dispatch(searchFlightSuccess()),
+    setSearchTextDispatcher: (searchText) => dispatch(setSearchText(searchText)),
+    showSpinnerDispatcher: () => dispatch(showSpinner()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FlightInformation);
+export default connect(mapStateToProps, mapDispatchToProps)(withAlert()(FlightInformation));

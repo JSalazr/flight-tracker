@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import RowInfo from './rowInfo';
 
 function TopRow({
@@ -14,7 +15,7 @@ function TopRow({
       <RowInfo title={'FLIGHT'} value={flightNumber} />
       <RowInfo title={'STATUS'} value={status} />
       <RowInfo title={'DESTINATION'} value={`${origin} TO ${destination}`} />
-      <RowInfo title={'DURATION'} value={duration} />
+      <RowInfo title={'DURATION'} value={moment.utc(moment.duration(duration, 'minutes').asMilliseconds()).format("H:mm")} />
     </div>
   );
 }
@@ -24,6 +25,6 @@ TopRow.propTypes = {
   status: PropTypes.string,
   origin: PropTypes.string,
   destination: PropTypes.string,
-  duration: PropTypes.string
+  duration: PropTypes.number
 };
 export default TopRow;
