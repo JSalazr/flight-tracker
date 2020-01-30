@@ -1,5 +1,7 @@
-import { SET_SEARCH_TEXT, SEARCH_FLIGHT } from "./actionTypes";
+import { SET_SEARCH_TEXT, SEARCH_FLIGHT, CLEAN_STORE } from "./actionTypes";
 import axios from 'axios';
+
+export const cleanStore = () => ({ type: CLEAN_STORE });
 
 export const setSearchText = searchText => ({
   type: SET_SEARCH_TEXT,

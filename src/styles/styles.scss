@@ -8,37 +8,43 @@
   margin-top: 15%;
 }
 
+.search-label {
+  font-size: 4em;
+  vertical-align: bottom;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.search-area {
+  border-radius: 25px;
+  border-style: none;
+  height: 2em;
+  font-size: 1.25em;
+}
+
+.search-bar {
+  width: 85%;
+  padding: 5px 5px 5px 15px;
+  color: #264653;
+  background: #ffffff;
+}
+
+.search-button {
+  width: 10%;
+  color: #ffffff;
+  background: #D100D1;
+  padding: 0.75em;
+  margin-left: 0.25em;
+}
+
+.search-button:hover {
+  background: #FF00FF;
+}
+
 .center {
   width: 50%;
   padding: 20px;
-  color: #ffffff;
-
-  .search-label {
-    font-size: 4em;
-    vertical-align: bottom;
-  }
-
-  .search-area {
-    border-radius: 25px;
-    border-style: none;
-    height: 2em;
-    font-size: 1.25em;
-  }
-
-  .search-bar {
-    width: 85%;
-    padding: 5px 5px 5px 15px;
-    color: #264653;
-    background: #ffffff;
-  }
-
-  .search-button {
-    width: 10%;
-    color: #ffffff;
-    background: #D100D1;
-    padding: 0.75em;
-    margin-left: 0.25em;
-  }
+  color: #ffffff;  
 }
 
 .navbar {
@@ -57,26 +63,11 @@
   }
 
   .search-area {
-    border-radius: 25px;
-    border-style: none;
-    height: 2em;
-    font-size: 1.25em;
     margin: 1em;
   }
 
   .search-bar {
     width: 75%;
-    padding: 5px 5px 5px 15px;
-    color: #264653;
-    background: #ffffff;
-  }
-
-  .search-button {
-    width: 10%;
-    color: #ffffff;
-    background: #D100D1;
-    padding: 0.75em;
-    margin-left: 0.25em;
   }
 }
 
@@ -89,21 +80,29 @@
   color: #264653;
   box-shadow: 3px 3px 3px #264653;
 
+  .plane-icon {
+    display: inline-block;
+    text-align: right;
+    font-size: 7em;
+    vertical-align: top;
+    margin-top: -0.5em;
+  }
+
+  .row-info {
+    display: inline-block;
+    width: 25%;
+    font-size: 1.25em;
+  }
+
+  .row-info-title {
+    font-size: 0.65em;
+  }
+
   .top-row {
     overflow: hidden;
     vertical-align: top;
     width: 100%;
     margin-bottom: 2em; 
-
-    .top-row-info {
-      display: inline-block;
-      width: 25%;
-      font-size: 1.25em;
-    }
-
-    .top-row-info-title {
-      font-size: 0.65em;
-    }
   }
 
   .departure-arrival-container {
@@ -115,44 +114,25 @@
       display: inline-block;
       text-align: left;
   
-      .departure-arrival-row-info {
-        display: inline-block;
-        width: 25%;
+      .row-info {
         margin-right: 0.5em;
         font-size: 2em;
       }
        
-      .departure-arrival-row-info-title {
+      .row-info-title {
         font-size: 0.41em;
       }
     }
-
-    .plane-icon {
-      display: inline-block;
-      text-align: right;
-      font-size: 7em;
-      vertical-align: top;
-      margin-top: -0.5em;
-    }
   }
   
-
-    
-
   .footer-row {
     overflow: hidden;
     vertical-align: top;
     width: 100%; 
     margin-bottom: 1em; 
 
-    .footer-row-info {
-      display: inline-block;
+    .row-info {
       width: 50%;
-      font-size: 1.25em;
-    }
-     
-    .footer-row-info-title {
-      font-size: 0.65em;
     }
   }
 }

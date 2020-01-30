@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { searchFlight } from '../../../redux/actions';
-import { FaPlaneDeparture } from 'react-icons/fa'
+import TopRow from './topRow';
+import DepartureArrivalRow from './departureArrivalRow';
+import FooterRow from './footerRow';
+
 
 class FlightInformation extends React.Component {
   constructor(props) {
@@ -25,67 +28,25 @@ class FlightInformation extends React.Component {
       <div className='result-page'>
         {flightInformation.flightNumber && (
           <div>
-            <div className='top-row'>
-              <div className='top-row-info'>
-                <div className='top-row-info-title'>FLIGHT</div>
-                {flightInformation.flightNumber}
-              </div>
-              <div className='top-row-info'>
-                <div className='top-row-info-title'>STATUS</div>
-                {flightInformation.status}
-              </div>
-              <div className='top-row-info'>
-                <div className='top-row-info-title'>DESTINATION</div>
-                {flightInformation.location.origin} TO {flightInformation.location.destination}
-              </div>
-              <div className='top-row-info'>
-                <div className='top-row-info-title'>DURATION</div>
-                {flightInformation.duration}
-              </div>
-            </div>
-            <div className='departure-arrival-container'>
-              <div className='departure-arrival-row'>
-                <div className='departure-arrival-row-info'>
-                  <div className='departure-arrival-row-info-title'>DEPARTURE GATE</div>
-                  {flightInformation.terminal}
-                </div>
-                <div className='departure-arrival-row-info'>
-                  <div className='departure-arrival-row-info-title'>DEPARTURE</div>
-                  {flightInformation.arrivalTime}
-                </div>
-                <div className='departure-arrival-row-info'>
-                  <div className='departure-arrival-row-info-title'>DEPARTURE DATE</div>
-                  {flightInformation.date}
-                </div>
-              </div>
-              <div className='departure-arrival-row'>
-                <div className='departure-arrival-row-info'>
-                  <div className='departure-arrival-row-info-title'>ARRIVAL GATE</div>
-                  {flightInformation.terminal}
-                </div>
-                <div className='departure-arrival-row-info'>
-                  <div className='departure-arrival-row-info-title'>ARRIVAL</div>
-                  {flightInformation.arrivalTime}
-                </div>
-                <div className='departure-arrival-row-info'>
-                  <div className='departure-arrival-row-info-title'>ARRIVAL DATE</div>
-                  {flightInformation.date}
-                </div>
-              </div>
-              <div className='plane-icon'>
-                <FaPlaneDeparture />
-              </div>
-            </div>
-            <div className='footer-row'>
-              <div className='footer-row-info'>
-                <div className='footer-row-info-title'>DELAY</div>
-                {flightInformation.delay}
-              </div>
-              <div className='footer-row-info'>
-                <div className='footer-row-info-title'>BAGGAGE TERMINAL</div>
-                {flightInformation.baggage}
-              </div>
-            </div>
+            <TopRow 
+              flightNumber={flightInformation.flightNumber}
+              status={flightInformation.status}
+              origin={flightInformation.location.origin}
+              destination={flightInformation.location.destination}
+              duration={flightInformation.duration}
+            />
+            <DepartureArrivalRow 
+              departureTerminal={flightInformation.terminal}
+              departureTime={flightInformation.arrivalTime}
+              departureDate={flightInformation.date}
+              arrivalTerminal={flightInformation.terminal}
+              arrivalTime={flightInformation.arrivalTime}
+              arrivalDate={flightInformation.date}
+            />
+            <FooterRow 
+              delay={flightInformation.delay}
+              baggage={flightInformation.baggage}
+            />
           </div>
         )}
       </div>
