@@ -8,10 +8,12 @@ function ResultPage() {
   let { flight } = useParams();
   
   return (
-    <div>
-      <SearchForm />
+    <>
+      <div className='navbar'>
+        <SearchForm />
+      </div>	
       <FlightInformation flight={flight} />
-    </div>	
+    </>	
   );
 }
 

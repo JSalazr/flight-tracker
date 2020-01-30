@@ -18,14 +18,15 @@ export const searchFlight = searchText => {
     flightNumber: searchText,
     location: {
       origin: 'LAX',
-      destination: 'SAP',
-      distance: '1000km'
+      destination: 'SAP'
     },
     date: '2020/28/01',
     arrivalTime: "10:30am",
     delay: 0,
     terminal: "G2",
-    baggage: "13"
+    baggage: "13",
+    duration: "15 hours",
+    status: "ON TIME"
   }
   return {
     type: SEARCH_FLIGHT,
