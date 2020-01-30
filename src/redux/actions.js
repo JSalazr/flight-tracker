@@ -38,6 +38,9 @@ export const searchFlight = async (searchText) => {
     method: 'get',
     url: `https://cors-server-js.herokuapp.com/https://api.flightstats.com/flex/flightstatus/rest/v2/json/flight/status/${airline[0]}/${flight[0]}/arr/2020/1/31?appId=${process.env.APP_ID}&appKey=${process.env.APP_KEY}&utc=false`, 
   });
+  if(rawFlightInfo.data.error) {
+    return {error: "Request Error"}
+  }
   if(rawFlightInfo.data.flightStatuses.length === 0){
     return {error: "Flight not found"}
   }
